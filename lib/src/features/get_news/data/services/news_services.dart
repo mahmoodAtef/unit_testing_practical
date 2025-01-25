@@ -5,10 +5,10 @@ import 'package:unit_testing_practical/src/core/utils/constants_manager.dart';
 import 'package:unit_testing_practical/src/features/get_news/data/models/article.dart';
 
 class NewsServices {
-  Dio _dio = Dio(BaseOptions(
-    headers: {"X-Api-Key": ConstantsManager.apiKey},
-    baseUrl: ConstantsManager.baseUrl,
-  ));
+  late Dio _dio;
+  NewsServices({required Dio dio}) {
+    _dio = dio;
+  }
 
   Future<Either<String, List<Article>>> getNews() async {
     try {
